@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap">
+</head>
+<body style="display: flex; flex-wrap: wrap; flex-direction: column; font-family: 'Noto Sans Mono', monospace;">
+    <select id="programs" style="height: 3rem; text-align: center; margin-bottom: 2rem; font-family: 'Noto Sans Mono', monospace; border: solid 0.1rem;">
+        <option value="clock">clock</option>
+        <option value="solid_color">solid_color</option>
+    </select>
+    <input type="button" onclick="check_options()" value="--show--" style="background-color: black; color: white; height: 3rem; font-family: 'Noto Sans Mono', monospace; border: none;">
+    <div id="solid_color_options" style="display: none;">
+        <h1>--solid color options--</h1>
+    </div>
+    <div id="clock_options" style="display: none; text-align: center; ">
+        <h1>--clock options--</h1>
+        <label for="timezone">Timezone: </label><br>
+        <input type="text" id="timezone" style="border: solid 0.1rem; font-family: 'Noto Sans Mono', monospace; margin-bottom: 2rem; margin-top: 0.5rem;"><br>
+        <label for="timezone">Move the 12 hour mark on the clock: </label><br>
+        <input type="button" id="clock_move_left" value="<<" onclick="clock_move_left()" style="background-color: black; color: white; height: 2rem; width: 3rem; border: none; font-family: 'Noto Sans Mono', monospace; margin-top: 0.5rem;">
+        <input type="button" id="clock_move_right" value=">>" onclick="clock_move_right()" style="background-color: black; color: white; height: 2rem; width: 3rem; border: none; font-family: 'Noto Sans Mono', monospace; margin-top: 0.5rem;"><br>
+        <input type="button" value="--apply--" style="background-color: black; color: white; height: 3rem; width: 10rem; font-family: 'Noto Sans Mono', monospace; border: none; margin-top: 3rem;">
+    </div>
+</body>
+<script>
+    function check_options() {
+        if (document.getElementById("programs").value == "solid_color") {
+            console.log("solid_color");
+            document.getElementById("solid_color_options").style.display = "block"
+            document.getElementById("clock_options").style.display = "none"
+        }
+        else if (document.getElementById("programs").value == "clock") {
+            console.log("clock");
+            document.getElementById("clock_options").style.display = "block"
+            document.getElementById("solid_color_options").style.display = "none"
+        }
+    }
+    function clock_move_left() {
+        window.open('http://'+ LocalIP + 'clock/left/clock_end','_self');
+    }
+    function clock_move_right() {
+        window.open('http://'+ LocalIP + 'clock/right/clock_end','_self');
+    }
+</script>
