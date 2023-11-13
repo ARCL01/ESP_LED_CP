@@ -1,24 +1,37 @@
-# ESP_LED_CP - Experimental 🔨
+# ESP_LED_CP :bulb:
+CP stands for **configuration program**.
+This program allows you to control LEDs over a web server that is hosted on the ESP32 itself. I did this project when I didn't know that something like WLED existed. If you are asking yourself if my work is better, then no, but I think it's easier to understand and configure.
 
-This branch is **experimental**, bugs are likely to occur.
-The program may not function as intended.
-Features added to this branch will always be listed in the description of the released version. Experimental releases will be only available in this branch, not in the main branch.
-Every release will be tagged with one of four tags according to program functionality.
+## Gettings started
+### Installation
+1. Download **ESP_LED_CP_x.x.x.zip** from releases
+2. Edit the pre-configured WiFi password and other settings to your liking in the **.ino** file
+3. Upload it to your ESP board
+4. Type the IP given to your ESP in the browser and enjoy!
 
-This README will be updated with a description of added functions and how to use and configure them once they are at least in a **Semi-functional** state.
+### Configuration
+All configurable options **should be** at the top of the program. They **should be** well commented but, I know myself, and I know for sure, that I didn't even paid attention to this.
+So, my solution to this. I will just list the important ones here.
 
-### Functionality tags
+```const char* ssid = "xxxx"```
+- Here, you will type your WiFi SSID
 
-  * **New-feature**
-    - The basic functionality of the program remains unchanged, added features work as intended and (from my point of view) are complete.
-  * **Functional**
-    - The basic functionality of the program remains unchanged, added features work as intended but can be improved. 
-  * **Semi-functional**
-    - The basic functionality of the program is changed in a way, that the features added, can be properly tested.
-  * **Non-Functional**
-    - The basic functionality of the program is changed in a way, that the features added, can be properly tested.
-    - Added features are not functioning as intended.
+```const char* password = "xxxx"```
+- Here, you will type you WiFi password
 
-I am open to any ideas on how to improve this program.
+```const char* config_vars[x] = {"xx","xx",...};```
+- Here, you will type all the options you can configure through the website
+- _This should change soon, I will replace this with more understandable options_
 
-Thank you, for taking the time to read this.
+```#define NUM_LEDS xx```
+- Here, you can define the length of the strip
+  
+```#define DATA_PIN xx```
+- Here, you can define the number of pins to which are LEDs connected.
+
+## Branches
+There are two main branches in this repository.
+- Main
+- Experimental
+   
+I think the names are self-explanatory but, the **main** branch is for stable releases and **experimental** is for, well, experiments.
